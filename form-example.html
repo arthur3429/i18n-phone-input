@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Input - Form Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-screen-lg mx-auto w-full px-10 py-20 max-md:px-5">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl font-bold text-gray-900 max-md:text-3xl">Contact Form Example</h1>
+            <p class="text-xl text-gray-600 mt-4">Example of phone input integrated in a form</p>
+        </div>
+
+        <form id="contact-form" class="flex flex-col gap-6 bg-white p-8 rounded-xl border border-gray-300 shadow-lg max-w-2xl mx-auto">
+            <!-- Name Input -->
+            <div class="flex flex-col gap-2">
+                <label for="name" class="text-sm text-gray-700 font-medium">Full Name</label>
+                <input type="text" id="name" name="name" required class="block px-4 py-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="John Doe" />
+            </div>
+
+            <!-- Email Input -->
+            <div class="flex flex-col gap-2">
+                <label for="email" class="text-sm text-gray-700 font-medium">Email</label>
+                <input type="email" id="email" name="email" required class="block px-4 py-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="john@example.com" />
+            </div>
+
+            <!-- Country Code and Phone Number -->
+            <div class="grid grid-cols-4 gap-6 max-md:grid-cols-1 relative">
+                <!-- Country Code Select -->
+                <div class="flex flex-col gap-2 col-span-1">
+                    <span class="text-sm text-gray-700 font-medium">
+                        Country Code
+                    </span>
+                    <div class="w-full">
+                        <div id="open-country-select" class="flex gap-2 justify-between items-center text-gray-900 rounded-lg border border-gray-300 shadow-sm h-12 w-full p-2.5 font-medium cursor-pointer hover:border-blue-500 hover:text-blue-500 transition max-md:justify-normal">
+                            <div class="w-6 h-4 rounded-sm shadow-sm bg-blue-100" style="background: url('https://flagsapi.com/BR/shiny/24.png') no-repeat center center;"></div>
+                            <span>+55</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90 min-w-5 max-md:ml-auto" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <input id="selected-country" type="hidden" name="countryCode" value="+55">
+                    </div>
+
+                    <!-- Dropdown Container -->
+                    <div id="select-container" class="hidden absolute w-[90%] bg-white left-0 top-[calc(100%+8px)] z-10 flex flex-col text-gray-900 rounded-lg border border-gray-300 shadow-lg p-2.5 max-md:w-full max-md:top-[84px] max-md:z-20">
+                        <input type="text" id="search-country" class="h-10 text-sm rounded-lg w-full border border-gray-300 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 px-3 mb-2" placeholder="Search for a country...">
+
+                        <div id="select-content" class="flex flex-col max-h-80 overflow-y-auto custom_scrollbar pt-2.5 gap-0.5"></div>
+                    </div>
+                </div>
+
+                <!-- Phone Number Input -->
+                <div class="flex flex-col gap-2 col-span-3 max-md:col-span-1">
+                    <span class="text-sm text-gray-700 font-medium">
+                        Phone Number
+                    </span>
+                    <div class="relative w-full">
+                        <input type="text" id="phone" name="phone" required class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 peer transition" placeholder=" " />
+                        <label for="phone" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 cursor-text">
+                            Phone Number
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Input -->
+            <div class="flex flex-col gap-2">
+                <label for="message" class="text-sm text-gray-700 font-medium">Message</label>
+                <textarea id="message" name="message" rows="4" class="block px-4 py-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none" placeholder="Your message..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="mt-4 cursor-pointer border border-blue-500 shadow-md rounded-lg bg-blue-500 w-full p-4 text-lg font-bold text-white flex items-center gap-4 justify-center tracking-wide hover:bg-blue-600 transition">
+                Send Message
+            </button>
+
+            <!-- Success Message -->
+            <div id="success-message" class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p class="text-sm text-green-800 font-medium">
+                    ✅ Form submitted successfully!
+                </p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p class="text-sm text-red-800 font-medium">
+                    ❌ Please enter a valid phone number.
+                </p>
+            </div>
+        </form>
+
+        <!-- Display Submitted Data -->
+        <div id="submitted-data" class="hidden mt-10 max-w-2xl mx-auto bg-white p-8 rounded-xl border border-gray-300 shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Submitted Data</h2>
+            <div class="space-y-2 text-sm">
+                <p><strong>Name:</strong> <span id="display-name"></span></p>
+                <p><strong>Email:</strong> <span id="display-email"></span></p>
+                <p><strong>Phone (E164):</strong> <span id="display-phone-e164" class="font-mono bg-gray-100 px-2 py-1 rounded"></span></p>
+                <p><strong>Phone (National):</strong> <span id="display-phone-national"></span></p>
+                <p><strong>Message:</strong> <span id="display-message"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="form-example.js"></script>
+</body>
+</html>

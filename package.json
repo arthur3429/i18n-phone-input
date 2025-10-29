@@ -1,0 +1,29 @@
+{
+  "name": "i18n-phone-input",
+  "version": "1.0.0",
+  "description": "A customizable international phone input component with country code selection, flag display, and automatic phone number validation and formatting.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "phone-input",
+    "international",
+    "i18n",
+    "phone-number",
+    "country-code",
+    "validation",
+    "formatting"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "google-libphonenumber": "^3.2.40"
+  },
+  "devDependencies": {
+    "vite": "^6.0.1"
+  }
+}

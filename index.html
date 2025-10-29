@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i18n Phone Input Component</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-screen-lg mx-auto w-full px-10 py-20 max-md:px-5">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl font-bold text-gray-900 max-md:text-3xl">i18n Phone Input Component</h1>
+            <p class="text-xl text-gray-600 mt-4">Select your country code and enter your phone number</p>
+        </div>
+
+        <div class="flex flex-col gap-6 bg-white p-8 rounded-xl border border-gray-300 shadow-lg max-w-2xl mx-auto">
+            <!-- Country Code and Phone Number -->
+            <div class="grid grid-cols-4 gap-6 max-md:grid-cols-1 relative">
+                <!-- Country Code Select -->
+                <div class="flex flex-col gap-2 col-span-1">
+                    <span class="text-sm text-gray-700 font-medium">
+                        Country Code
+                    </span>
+                    <div class="w-full">
+                        <div id="open-country-select" class="flex gap-2 justify-between items-center text-gray-900 rounded-lg border border-gray-300 shadow-sm h-12 w-full p-2.5 font-medium cursor-pointer hover:border-blue-500 hover:text-blue-500 transition max-md:justify-normal">
+                            <div class="w-6 h-4 rounded-sm shadow-sm bg-blue-100" style="background: url('https://flagsapi.com/BR/shiny/24.png') no-repeat center center;"></div>
+                            <span>+55</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90 min-w-5 max-md:ml-auto" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <input id="selected-country" type="hidden" name="countryCode" value="+55">
+                    </div>
+
+                    <!-- Dropdown Container -->
+                    <div id="select-container" class="hidden absolute w-[90%] bg-white left-0 top-[calc(100%+8px)] z-10 flex flex-col text-gray-900 rounded-lg border border-gray-300 shadow-lg p-2.5 max-md:w-full max-md:top-[84px] max-md:z-20">
+                        <input type="text" id="search-country" class="h-10 text-sm rounded-lg w-full border border-gray-300 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 px-3 mb-2" placeholder="Search for a country...">
+
+                        <div id="select-content" class="flex flex-col max-h-80 overflow-y-auto custom_scrollbar pt-2.5 gap-0.5"></div>
+                    </div>
+                </div>
+
+                <!-- Phone Number Input -->
+                <div class="flex flex-col gap-2 col-span-3 max-md:col-span-1">
+                    <span class="text-sm text-gray-700 font-medium">
+                        Phone Number
+                    </span>
+                    <div class="relative w-full">
+                        <input type="text" id="phone" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 peer transition" placeholder=" " />
+                        <label for="phone" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 cursor-text">
+                            Phone Number
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p class="text-sm text-blue-800">
+                    <strong>Note:</strong> The phone number will be automatically formatted based on the selected country code. Valid numbers will display in national format, while invalid numbers will be highlighted with a red border.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
