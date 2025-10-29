@@ -2,6 +2,8 @@
 
 International phone input component with country code selection, flag display, and automatic validation/formatting.
 
+![Component Demo](img/demo.png "Component Demo")
+
 ## What it does
 
 - Country code selector with 250+ countries and flags
